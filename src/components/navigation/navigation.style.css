@@ -1,0 +1,24 @@
+.app-nav-ctn {
+  border: 1px solid dimgray;
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.app-nav-link {
+  display: inline-block;
+}
+
+.app-nav-link a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  color: black;
+  height: 50px;
+  width: 200px;
+}
+
+.app-nav-link a:hover {
+  background: darkcyan;
+  cursor: pointer;
+  color: white;
+}

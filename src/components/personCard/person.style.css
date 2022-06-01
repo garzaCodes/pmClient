@@ -1,0 +1,14 @@
+.person-name {
+  font-weight: bold;
+  color: darkcyan;
+}
+.person-email,
+.person-phone {
+  font-size: 0.9rem;
+}
+
+.person-image-ctn,
+.person-details-ctn {
+  display: inline-block;
+  margin-right: 10px;
+}
