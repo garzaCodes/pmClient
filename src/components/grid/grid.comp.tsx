@@ -25,11 +25,10 @@ export default function Grid({ cols = [], data = [] }: any) {
     <>
       <div className="ag-theme-alpine" style={{ width: 500, height: 500 }}>
         <AgGridReact
-          // Ref for accessing Grid's API
-          rowData={rowData} // Row Data for Rows
-          columnDefs={columnDefs} // Column Defs for Columns
-          animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-          rowSelection="multiple" // Options - allows click selection of rows
+          rowData={rowData}
+          columnDefs={columnDefs}
+          animateRows={true}
+          rowSelection="multiple"
         />
       </div>
     </>
