@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import "./navigation.style.css";
 
 export default function Navigation() {
@@ -12,17 +12,19 @@ export default function Navigation() {
 
   return (
     <>
-      <Row>
-        <Col className="app-nav-ctn" xs={12}>
-          {links.map((link) => {
-            return (
-              <div className="app-nav-link">
-                <a href={link.link}>{link.title}</a>
-              </div>
-            );
-          })}
-        </Col>
-      </Row>
+      <Navbar bg="light" expand="lg" className="mb-4">
+        <Container>
+          <Navbar.Brand href="#home">pmClient</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              {links.map((link: any, index: number) => (
+                <Nav.Link key={index}>{link.title}</Nav.Link>
+              ))}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </>
   );
 }
