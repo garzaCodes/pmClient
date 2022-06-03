@@ -1,35 +1,66 @@
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import { AgGridReact } from "ag-grid-react";
-import React, { useEffect, useState } from "react";
-import "ag-grid-community/dist/styles/ag-grid.css"; // Core grid CSS, always needed
-import "ag-grid-community/dist/styles/ag-theme-alpine.css"; // Optional theme CSS
+import { GridApi } from "ag-grid-community";
+import * as React from "react";
 
-export default function Grid({ cols = [], data = [] }: any) {
-  const [columnDefs, setColumnDefs] = useState(cols);
-  const [rowData, setRowData] = useState(data);
-  // const gridRef = useRef();
+export default function Grid({ cols = [], data }: any) {
+  const [rowData, setRowData] = React.useState();
+  const [gridApi, setGridApi] = React.useState<GridApi | undefined>();
 
-  useEffect(() => {
-    setColumnDefs(() => {
-      return cols.map((col: any) => {
-        return {
-          headerName: col.title,
-          field: col.field,
-          sortable: true,
-          filter: true,
-        };
+  const [columnDefs, setColumnDefs] = React.useState(() => {
+    return cols.map((col: any, index: number) => {
+      let colDef: any = {
+        headerName: col.title,
+        field: col.field,
+        sortable: true,
+        filter: true,
+      };
+
+      if (index === 0) {
+        colDef.checkboxSelection = true;
+      }
+
+      return colDef;
+    });
+  });
+
+  const [gridStyle, setgridStyle] = React.useState({
+    height: "100%",
+    width: "100%",
+  });
+
+  const onGridReady = (params: any) => {
+    setGridApi(params.api);
+    setRowData(data);
+  };
+
+  React.useEffect(() => {
+    setRowData(() => {
+      return data.map((row: any) => {
+        return row;
       });
     });
-  }, [cols]);
+  }, [data]);
+
+  React.useEffect(() => {
+    if (gridApi) {
+      gridApi.sizeColumnsToFit();
+    }
+  }, [rowData]);
 
   return (
     <>
-      <div className="ag-theme-alpine" style={{ width: 500, height: 500 }}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          animateRows={true}
-          rowSelection="multiple"
-        />
+      <div className="ag-theme-alpine" style={{ height: "calc(100% - 25px)" }}>
+        <div style={gridStyle}>
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            onGridReady={onGridReady}
+            animateRows={true}
+            rowSelection="multiple"
+          />
+        </div>
       </div>
     </>
   );

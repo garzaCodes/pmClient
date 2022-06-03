@@ -22,3 +22,22 @@
   cursor: pointer;
   color: white;
 }
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-row div {
+  display: inline-block;
+  padding: 8px 15px;
+}
+
+.button-row div:hover {
+  cursor: pointer;
+  color: dimgray;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}

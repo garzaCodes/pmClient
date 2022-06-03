@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./screens/dashboard/dashboard";
-import React from "react";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import AppLayout from "./screens/app-layout/app-layout";
+import Dashboard from "./screens/dashboard/dashboard";
+import Calendar from "./screens/calendar/calendar";
+import Contacts from "./screens/contacts/contacts";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Tasks from "./screens/tasks/tasks";
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Dashboard />}></Route>
+          <Route path="tasks" element={<Tasks />}></Route>
+          <Route path="calendar" element={<Calendar />}></Route>
+          <Route path="contacts" element={<Contacts />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

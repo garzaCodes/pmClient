@@ -1,33 +1,29 @@
-import { Row, Col, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "./person.style.css";
 
 export default function PersonCard({ person }: any) {
   return (
     <>
-      <Row data-testid="person-card" style={{ margin: "15px 0" }}>
-        <Col md="12" lg="8" xl="6">
-          <Card>
-            <Card.Body>
-              <div className="person-image-ctn">
-                <img
-                  className="person-image"
-                  src={person.image}
-                  alt="User Profile"
-                  height={120}
-                />
-              </div>
+      <Card className="mb-2">
+        <Card.Body>
+          <div className="person-image-ctn">
+            <img
+              className="person-image"
+              src={person.image}
+              alt="User Profile"
+              height={200}
+            />
+          </div>
 
-              <div className="person-details-ctn">
-                <div className="person-name">
-                  {person.firstName} {person.lastName}
-                </div>
-                <div className="person-email">{person.email}</div>
-                <div className="person-phone">{person.phone}</div>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+          <div className="person-details-ctn">
+            <div className="person-name">
+              {person.firstName} {person.lastName}
+            </div>
+            <div className="person-email">{person.email}</div>
+            <div className="person-phone">{person.phone}</div>
+          </div>
+        </Card.Body>
+      </Card>
     </>
   );
 }
